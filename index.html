@@ -24,6 +24,7 @@
   --navy: #7ea9db; --honey: #e3a944; --chip: #223246; --chip-on: #7ea9db; --chip-on-fg: #0d1520; color-scheme: dark }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { background: var(--bg); color: var(--fg); font: 14px/1.5 var(--body); min-height: 100%; }
 .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 24px; max-width: 1240px; margin: 0 auto; }
 header { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: end; justify-content: space-between; margin-bottom: 12px; }
@@ -161,8 +162,8 @@ function render() {
   pL.className = "page left" + (l < 1 ? " blank" : "");
   pR.className = "page right" + (r > b.n ? " blank" : "");
   iL.hidden = l < 1; iR.hidden = r > b.n;
-  if (l >= 1) { iL.src = b.src(l); iL.alt = `Sayfa ${l}`; }
-  if (r <= b.n) { iR.src = b.src(r); iR.alt = `Sayfa ${r}`; }
+  if (l >= 1) { iL.src = b.src(l); iL.alt = `Sayfa ${l}`; } else iL.removeAttribute("src");
+  if (r <= b.n) { iR.src = b.src(r); iR.alt = `Sayfa ${r}`; } else iR.removeAttribute("src");
   if (state.cover) {
     if (r === 1) pR.classList.add("cover-front");
     if (r > b.n && !single()) { pR.classList.remove("blank"); pR.classList.add("cover-back"); }
