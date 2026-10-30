@@ -175,7 +175,7 @@ function render() {
   $("spec").textContent = `${b.name} · A4 210 × 297 mm · ${b.n} sayfa, çift taraflı ${Math.ceil(b.n / 2)} yaprak · sol kenardan spiral · iç kenar 22 mm, dış kenar 12 mm`;
   $("note").innerHTML = state.cover
     ? `<b>Kapaklı hâli:</b> baskıcıdaki standart spiral cilt böyle olur: önde şeffaf PVC, arkada siyah karton. Dosyanın kendi kapak sayfası PVC'nin altından görünür; ayrıca bir kapak tasarımı gerekmez.`
-    : `<b>Kitap düzeni (30 Ekim):</b> her bölüm yeni sayfada başlar; iki sayfalık bölümler ve projeler sol sayfada açılır, karşılıklı durur. Kapağın arkası boş, içindekiler 3. sayfada. Sayfa 30 bir ara sayfa çizimi: Bölüm 9'un karşısına denk gelen arka yüz böyle dolduruldu. Baskıcıya "çift taraflı, A4, sol kenardan spiral" demen yeterli. Kapaklı hâlini görmek için yukarıdaki kutuyu işaretle.`;
+    : `<b>Kitap düzeni (30 Ekim):</b> her bölüm yeni sayfada başlar; iki sayfalık bölümler ve projeler sol sayfada açılır, karşılıklı durur. Kapağın arkasında açılış çizimi, içindekiler 3. sayfada. Sayfa 30 bir ara sayfa çizimi: Bölüm 9'un karşısına denk gelen arka yüz böyle dolduruldu. Baskıcıya "çift taraflı, A4, sol kenardan spiral" demen yeterli. Kapaklı hâlini görmek için yukarıdaki kutuyu işaretle.`;
   document.querySelectorAll("#rail button").forEach(btn => btn.setAttribute("aria-current", String(+btn.dataset.p === l || +btn.dataset.p === r)));
   const rail = $("rail"), cur = rail.querySelector('button[aria-current="true"]');
   if (cur) rail.scrollTo({ left: cur.offsetLeft - rail.clientWidth / 2 + cur.clientWidth / 2, behavior: "smooth" });  // rail only, never the page
