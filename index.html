@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body style="margin:0">
+<title>IEC Kuruluş Dosyası Baskı Önizleme</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a dark desk fills the middle; the open spiral-bound A4 book sits on it, a thin toolbar above, a thumbnail rail below. */
+:root {
+  --bg: #dfe6ee; --desk: #2a3847; --desk2: #1f2b38; --fg: #1c2633; --muted: #5b6b7d; --panel: #ffffff; --line: #c6d2df;
+  --navy: #154a7f; --honey: #d4962a; --coil: #15191f; --coil-hi: #4a535f; --hole: #10161d; --chip: #e9eef4; --chip-on: #154a7f; --chip-on-fg: #fff;
+  --display: "Space Grotesk", system-ui, sans-serif; --body: "IBM Plex Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1620; --desk: #182230; --desk2: #111924; --fg: #e6edf5; --muted: #9fb0c3; --panel: #17212d; --line: #2b3a4a;
+  --navy: #7ea9db; --honey: #e3a944; --chip: #223246; --chip-on: #7ea9db; --chip-on-fg: #0d1520; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1620; --desk: #182230; --desk2: #111924; --fg: #e6edf5; --muted: #9fb0c3; --panel: #17212d; --line: #2b3a4a;
+  --navy: #7ea9db; --honey: #e3a944; --chip: #223246; --chip-on: #7ea9db; --chip-on-fg: #0d1520; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 14px/1.5 var(--body); min-height: 100%; }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 24px; max-width: 1240px; margin: 0 auto; }
+header { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: end; justify-content: space-between; margin-bottom: 12px; }
+h1 { font: 700 clamp(22px, 3.4vw, 30px)/1.1 var(--display); margin: 0; color: var(--navy); text-wrap: balance; }
+.eyebrow { font: 500 11px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--honey); margin-bottom: 4px; }
+.spec { font: 500 12px var(--mono); color: var(--muted); }
+.bar { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin: 8px 0 14px; }
+.seg { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; }
+.seg button, .tog { border: 0; background: transparent; color: var(--fg); font: 600 13px var(--body); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-fg); }
+.tog { background: var(--chip); display: inline-flex; gap: 8px; align-items: center; }
+.tog input { accent-color: var(--navy); width: 15px; height: 15px; margin: 0; }
+.nav { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+.nav button { border: 0; background: var(--chip); color: var(--fg); font: 700 16px var(--body); width: 38px; height: 34px; border-radius: 10px; cursor: pointer; }
+.nav button:disabled { opacity: 0.35; cursor: default; }
+.nav output { font: 500 13px var(--mono); min-width: 12ch; text-align: center; }
+:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+
+.desk { background: radial-gradient(120% 90% at 50% 20%, var(--desk), var(--desk2)); border-radius: 18px; padding: clamp(14px, 3vw, 40px) clamp(10px, 2.5vw, 34px); }
+.book { position: relative; margin: 0 auto; max-width: 1060px; display: grid; grid-template-columns: 1fr 44px 1fr; align-items: stretch; }
+.page { position: relative; aspect-ratio: 794 / 1123; max-width: 100%; background: #fff; cursor: pointer; user-select: none; }
+.page img { display: block; width: 100%; height: 100%; object-fit: fill; }
+.page.left { box-shadow: -6px 8px 22px rgba(0, 0, 0, 0.45), 1px 0 0 rgba(0, 0, 0, 0.1) inset; }
+.page.right { box-shadow: 6px 8px 22px rgba(0, 0, 0, 0.45), -1px 0 0 rgba(0, 0, 0, 0.1) inset; }
+.page.blank { background: transparent; box-shadow: none; cursor: default; }
+/* a few sheets under the open pages */
+.page.left:not(.blank)::before, .page.right:not(.blank)::before { content: ""; position: absolute; inset: 2px 0 -3px 0; background: #e9e4d8; z-index: -1; box-shadow: 0 1px 0 #d8d2c4, 0 2px 0 #fff, 0 3px 0 #d8d2c4; }
+.page.left::before { left: 3px; } .page.right::before { right: 3px; }
+/* gutter shading */
+.page.left:not(.blank)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to left, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.03) 9%, transparent 16%); pointer-events: none; }
+.page.right:not(.blank)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.03) 9%, transparent 16%); pointer-events: none; }
+.page.cover-front img { filter: brightness(1.04) contrast(0.96); }
+.page.cover-front::after { background: linear-gradient(118deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.06) 32%, rgba(255, 255, 255, 0.02) 55%, rgba(255, 255, 255, 0.3) 78%, rgba(255, 255, 255, 0.08)), linear-gradient(to right, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.03) 9%, transparent 16%) !important; }
+.page.cover-back { background: #171a1f; cursor: default; box-shadow: 6px 8px 22px rgba(0, 0, 0, 0.5); }
+.page.cover-back::after { background: linear-gradient(to right, rgba(255, 255, 255, 0.05), transparent 20%) !important; }
+.spine { position: relative; }
+.spine svg { position: absolute; left: -22px; top: 0; width: 88px; height: 100%; overflow: visible; }
+.hint { font: 500 12px var(--mono); color: rgba(255, 255, 255, 0.72); text-align: center; margin: 12px 0 0; }
+.note { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; margin-top: 14px; color: var(--muted); font-size: 13px; }
+.note b { color: var(--fg); }
+
+.rail { margin-top: 14px; display: flex; gap: 6px; overflow-x: auto; padding: 6px 2px 10px; scroll-snap-type: x proximity; }
+.rail button { flex: none; border: 2px solid transparent; padding: 0; border-radius: 6px; background: #fff; cursor: pointer; scroll-snap-align: center; width: 54px; aspect-ratio: 794 / 1123; overflow: hidden; position: relative; }
+.rail button img { width: 100%; height: 100%; display: block; object-fit: fill; }
+.rail button span { position: absolute; left: 0; right: 0; bottom: 0; font: 500 9px var(--mono); background: rgba(21, 74, 127, 0.85); color: #fff; padding: 1px 0; }
+.rail button[aria-current="true"] { border-color: var(--honey); }
+.rail button.odd { margin-right: 6px; } .rail button.even { margin-left: -2px; }
+
+@media (max-width: 720px) {
+  .book { grid-template-columns: 1fr; max-width: 420px; }
+  .book.single .page.left, .book.single .spine { display: none; }
+  .page.right { box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45); }
+  .page.right::after { background: linear-gradient(to right, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.04) 9%, transparent 16%); }
+  .page.right .edgeholes { display: block; }
+  .nav { margin-left: 0; }
+}
+.edgeholes { display: none; position: absolute; left: 10px; top: 0; height: 100%; width: 10px; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) { .page img { transition: opacity 0.18s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">IUS Engineering Club · SCC teslimi · 30 Ekim 2026</div>
+      <h1>Kuruluş dosyası, spiral ciltli hâli</h1>
+    </div>
+    <div class="spec" id="spec"></div>
+  </header>
+
+  <div class="bar">
+    <div class="seg" role="group" aria-label="Dil">
+      <button type="button" id="langTr" aria-pressed="true">Türkçe</button>
+      <button type="button" id="langEn" aria-pressed="false">English</button>
+    </div>
+    <label class="tog" for="cover"><input type="checkbox" id="cover"> Şeffaf ön kapak + siyah arka karton</label>
+    <div class="nav">
+      <button type="button" id="prev" aria-label="Önceki sayfa">‹</button>
+      <output id="where"></output>
+      <button type="button" id="next" aria-label="Sonraki sayfa">›</button>
+    </div>
+  </div>
+
+  <div class="desk">
+    <div class="book" id="book">
+      <div class="page left" id="pL"><img id="imgL" alt=""></div>
+      <div class="spine"><svg id="coil" aria-hidden="true"></svg></div>
+      <div class="page right" id="pR"><img id="imgR" alt=""><svg class="edgeholes" id="edgeholes" aria-hidden="true"></svg></div>
+    </div>
+    <p class="hint">Sol sayfaya tıkla: geri · sağ sayfaya tıkla: ileri · ok tuşları da çalışır</p>
+  </div>
+
+  <div class="note" id="note"></div>
+  <div class="rail" id="rail" aria-label="Sayfalar"></div>
+</div>
+
+<script>
+const BOOKS = { tr: { n: 39, src: i => `pages/tr-${String(i).padStart(2, "0")}.jpg`, name: "Kuruluş Dosyası (TR)" },
+                en: { n: 41, src: i => `pages/en-${String(i).padStart(2, "0")}.jpg`, name: "Establishment Dossier (EN)" } };
+const $ = id => document.getElementById(id);
+const state = { lang: "tr", spread: 0, cover: false };
+try { Object.assign(state, JSON.parse(localStorage.getItem("iec-kitap") || "{}")); } catch (e) {}
+if (!BOOKS[state.lang]) state.lang = "tr";
+
+function book() { return BOOKS[state.lang]; }
+const single = () => $("book").classList.contains("single");           // phone: one page per step
+function spreads() { return single() ? book().n : Math.floor(book().n / 2) + 1; }   // spread k: left = 2k, right = 2k + 1
+function save() { try { localStorage.setItem("iec-kitap", JSON.stringify(state)); } catch (e) {} }
+
+function drawCoil() {
+  const h = $("pR").getBoundingClientRect().height || 600;
+  const loops = 34, pitch = h / loops, out = [];
+  for (let i = 0; i < loops; i++) {
+    const y = pitch * (i + 0.5);
+    out.push(`<rect x="12" y="${(y - 3.5).toFixed(1)}" width="10" height="7" rx="2.5" fill="var(--hole)"/>`,
+             `<rect x="66" y="${(y - 3.5).toFixed(1)}" width="10" height="7" rx="2.5" fill="var(--hole)"/>`,
+             `<path d="M17 ${y.toFixed(1)} C17 ${(y + 7).toFixed(1)} 71 ${(y + 7).toFixed(1)} 71 ${y.toFixed(1)}" fill="none" stroke="var(--coil)" stroke-width="2.4" opacity="0.5"/>`,
+             `<path d="M17 ${y.toFixed(1)} C17 ${(y - 9).toFixed(1)} 71 ${(y - 9).toFixed(1)} 71 ${y.toFixed(1)}" fill="none" stroke="var(--coil)" stroke-width="3.4" stroke-linecap="round"/>`,
+             `<path d="M24 ${(y - 5.2).toFixed(1)} C32 ${(y - 7.4).toFixed(1)} 44 ${(y - 7.6).toFixed(1)} 52 ${(y - 6).toFixed(1)}" fill="none" stroke="var(--coil-hi)" stroke-width="1" stroke-linecap="round"/>`);
+  }
+  $("coil").setAttribute("viewBox", `0 0 88 ${h.toFixed(0)}`);
+  $("coil").setAttribute("preserveAspectRatio", "none");
+  $("coil").innerHTML = out.join("");
+  // phone: holes along the single page's left edge
+  const eh = [];
+  for (let i = 0; i < loops; i++) { const y = pitch * (i + 0.5); eh.push(`<rect x="0" y="${(y - 3.5).toFixed(1)}" width="10" height="7" rx="2.5" fill="var(--hole)"/><path d="M-2 ${(y - 1).toFixed(1)} H8" stroke="var(--coil)" stroke-width="3" stroke-linecap="round"/>`); }
+  $("edgeholes").setAttribute("viewBox", `0 0 10 ${h.toFixed(0)}`);
+  $("edgeholes").setAttribute("preserveAspectRatio", "none");
+  $("edgeholes").innerHTML = eh.join("");
+}
+
+function render() {
+  const b = book(), k = Math.max(0, Math.min(state.spread, spreads() - 1)); state.spread = k;
+  const l = single() ? 0 : 2 * k, r = single() ? k + 1 : 2 * k + 1;
+  const pL = $("pL"), pR = $("pR"), iL = $("imgL"), iR = $("imgR");
+  pL.className = "page left" + (l < 1 ? " blank" : "");
+  pR.className = "page right" + (r > b.n ? " blank" : "");
+  iL.hidden = l < 1; iR.hidden = r > b.n;
+  if (l >= 1) { iL.src = b.src(l); iL.alt = `Sayfa ${l}`; }
+  if (r <= b.n) { iR.src = b.src(r); iR.alt = `Sayfa ${r}`; }
+  if (state.cover) {
+    if (r === 1) pR.classList.add("cover-front");
+    if (r > b.n && !single()) { pR.classList.remove("blank"); pR.classList.add("cover-back"); }
+  }
+  $("where").textContent = l < 1 ? `Sayfa 1 / ${b.n}` : r > b.n ? `Sayfa ${l} / ${b.n}` : `Sayfa ${l}–${r} / ${b.n}`;
+  $("prev").disabled = k === 0; $("next").disabled = k === spreads() - 1;
+  $("langTr").setAttribute("aria-pressed", String(state.lang === "tr")); $("langEn").setAttribute("aria-pressed", String(state.lang === "en"));
+  $("cover").checked = state.cover;
+  $("spec").textContent = `${b.name} · A4 210 × 297 mm · ${b.n} sayfa, çift taraflı ${Math.ceil(b.n / 2)} yaprak · sol kenardan spiral · iç kenar 22 mm, dış kenar 12 mm`;
+  $("note").innerHTML = state.cover
+    ? `<b>Kapaklı hâli:</b> baskıcıdaki standart spiral cilt böyle olur: önde şeffaf PVC, arkada siyah karton. Dosyanın kendi kapak sayfası PVC'nin altından görünür; ayrıca bir kapak tasarımı gerekmez.`
+    : `<b>Kitap düzeni (30 Ekim):</b> her bölüm yeni sayfada başlar; iki sayfalık bölümler ve projeler sol sayfada açılır, karşılıklı durur. Kapağın arkası künye, ardından içindekiler. Tek bir "bilerek boş" arka yüz var (Türkçede 30, İngilizcede 21 ve 32); kitaplarda olağandır. Baskıcıya "çift taraflı, A4, sol kenardan spiral" demen yeterli. Kapaklı hâlini görmek için yukarıdaki kutuyu işaretle.`;
+  document.querySelectorAll("#rail button").forEach(btn => btn.setAttribute("aria-current", String(+btn.dataset.p === l || +btn.dataset.p === r)));
+  const rail = $("rail"), cur = rail.querySelector('button[aria-current="true"]');
+  if (cur) rail.scrollTo({ left: cur.offsetLeft - rail.clientWidth / 2 + cur.clientWidth / 2, behavior: "smooth" });  // rail only, never the page
+  // preload neighbours
+  for (const p of [l - 2, l - 1, r + 1, r + 2]) if (p >= 1 && p <= b.n) { const im = new Image(); im.src = b.src(p); }
+  save();
+}
+
+function buildRail() {
+  const b = book(); const out = [];
+  for (let p = 1; p <= b.n; p++) out.push(`<button type="button" class="${p % 2 ? "odd" : "even"}" data-p="${p}" aria-label="Sayfa ${p}"><img src="${b.src(p)}" alt="" loading="lazy"><span>${p}</span></button>`);
+  $("rail").innerHTML = out.join("");
+}
+
+function go(d) { state.spread = Math.max(0, Math.min(spreads() - 1, state.spread + d)); render(); }
+$("prev").addEventListener("click", () => go(-1)); $("next").addEventListener("click", () => go(1));
+$("pL").addEventListener("click", () => go(-1)); $("pR").addEventListener("click", () => go(1));
+document.addEventListener("keydown", e => { if (e.key === "ArrowLeft") go(-1); if (e.key === "ArrowRight") go(1); });
+$("langTr").addEventListener("click", () => { state.lang = "tr"; state.spread = 0; buildRail(); render(); });
+$("langEn").addEventListener("click", () => { state.lang = "en"; state.spread = 0; buildRail(); render(); });
+$("cover").addEventListener("change", e => { state.cover = e.target.checked; render(); });
+$("rail").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.spread = single() ? +b.dataset.p - 1 : Math.floor(+b.dataset.p / 2); render(); });
+new ResizeObserver(drawCoil).observe($("pR"));
+const mq = matchMedia("(max-width: 720px)");
+function setMode(m) { const page = single() ? state.spread + 1 : 2 * state.spread + 1; $("book").classList.toggle("single", m); state.spread = m ? page - 1 : Math.floor(page / 2); render(); }
+if (mq.matches) $("book").classList.add("single");
+mq.addEventListener("change", e => setMode(e.matches));
+
+buildRail(); render(); drawCoil();
+</script>
+
+</body>
+</html>
